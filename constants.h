@@ -12,11 +12,11 @@
 #define R_Down 1717
 #define L_Down 1708
 #define cup_hold 20000
-#define early_hold 39000
-#define first_hold 63000//after pom dump
-#define second_hold 72000//after first drink
-#define third_hold 86000//after second drink
-#define forth_hold 114000//after third drink
+#define early_hold 39000//after first pom dump in startbox
+#define first_hold 58000//after pom dump
+#define second_hold 69800//after first drink
+#define third_hold 86800//after second drink
+#define forth_hold 110800//after third drink
 
 
 // left motor = black wire toward screen
@@ -255,10 +255,16 @@ extern int timer;
 void bully_motor();
 void Spec_Drive(int target_mav_speed,double inches);
 void safe_square_up(int speed);
+void safe_square_up_back(int speed);
 void safe_small_square_up(int speed);
 void  quick_front_IR_check();
 void raise_routine();
 void lower_routine();
+void supa_left_shift();
+int grab_cups(int input);
+void scenario1_left_shift();
+void supa_right_shift();
+void starting_position();
 #endif
 
 

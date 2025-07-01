@@ -20,20 +20,45 @@ void owen_turn_middle()
 void right_shift(){
     raise_routine();
     turn1(-45);
-    Drive(-1250,5);
+    Drive(-1300,5);
     turn1(45); 
-    Drive(1250,3.5);
+    Drive(1300,3.5);
 lower_routine();
 }
-
-
+void supa_left_shift()//used in scenario 3
+{
+  raise_routine();
+    turn1(45);
+    Drive(-1300,12);
+    turn1(-45);
+    Drive(1300,8);
+    lower_routine();
+}
+void supa_right_shift()//used in scenario 1
+    {
+ raise_routine();
+    turn1(-45);
+    Drive(-1300,12);
+    turn1(45);
+    Drive(1300,8);
+    lower_routine();
+}
+void scenario1_left_shift()
+{
+raise_routine();
+ turn1(45); 
+    Drive(-1300,6);
+    turn1(-45);
+    Drive(1300, 4);
+    lower_routine();
+}
 
 void left_shift(){
     raise_routine();
     turn1(45); 
-    Drive(-1250,6);
+    Drive(-1300,6);
     turn1(-45);
-    Drive(1250, 4);
+    Drive(1300, 4);
     lower_routine();
 }
 
@@ -43,46 +68,31 @@ void scenario1(int side, int num_cups,int input) {//blue pink green
     printf("internal_timer = %d \n",internal_timer);
     // PINK =1 
     if (num_cups == 2) {
-        lower_routine();//should be dumped at 62
-        while(internal_timer<71000){msleep(5); internal_timer =systime()-input;}//adjusting
-        left_shift();//positioning for green drop
-        while(internal_timer<84000){msleep(5); internal_timer =systime()-input;}//adjusting
-        right_shift();
-        msleep(30);
-        right_shift();// positioning for blue
-        while(internal_timer<110000){msleep(5); internal_timer =systime()-input;}//this exits scenario and put into 
+        
     }
 
     else if (num_cups == 3) {
         lower_routine();//should be dumped at 62
         while(internal_timer<second_hold){msleep(5); internal_timer =systime()-input;}//adjusting
-        left_shift();//positioning for green drop
+       scenario1_left_shift();//positioning for green drop
         while(internal_timer<third_hold){msleep(5); internal_timer =systime()-input;}//adjusting
-        right_shift();
-        msleep(30);
-        right_shift();// positioning for blue
+        supa_right_shift();// positioning for blue
         while(internal_timer<forth_hold){msleep(5); internal_timer =systime()-input;}//this exits scenario and put into
         //time to dump
         raise_routine();
-        Drive(-1500,4.0);
+        Drive(-1500,3.0);
         msleep(40);
         turn1(90);
-        Drive(1500,8.5);
+        Drive(1500,4.5);
         set_servo_position(R_Arm,R_Down-200);
     }
 }
-void scenario2(int side, int num_cups,int input) {
+void scenario2(int side, int num_cups,int input) {//blue green pink
     int internal_timer = input;
     internal_timer = systime()-input;
     printf("internal_timer = %d \n",internal_timer);
     if (num_cups == 2) {
-        while(internal_timer<second_hold){msleep(5); internal_timer =systime()-input;}//adjusting
-        left_shift();
-        while(internal_timer<71000){msleep(5); internal_timer =systime()-input;}//adjusting
-        right_shift();
-        while(internal_timer<84000){msleep(5); internal_timer =systime()-input;}//adjusting
-        left_shift();
-        while(internal_timer<110000){msleep(5); internal_timer =systime()-input;}//this exits scenario and put into 
+        
     }
 
 
@@ -96,48 +106,37 @@ void scenario2(int side, int num_cups,int input) {
         while(internal_timer<forth_hold){msleep(5); internal_timer =systime()-input;}//this exits scenario and put into 
     }
     raise_routine();
-        Drive(-1500,4.0);
+        Drive(-1500,3.0);
         msleep(40);
         turn1(90);
-        Drive(1500,8.5);
+        Drive(1500,4.5);
         set_servo_position(R_Arm,R_Down-200);
 }
 
-void scenario3(int side, int num_cups,int input) {
+void scenario3(int side, int num_cups,int input) {//pink blue green
     int internal_timer = input;
     internal_timer = systime()-input;
     printf("internal_timer = %d \n",internal_timer);
 
 
     if (num_cups == 2) {
-        while(internal_timer<63000){msleep(5); internal_timer =systime()-input;}//adjusting
-        right_shift();
-        while(internal_timer<71000){msleep(5); internal_timer =systime()-input;}//adjusting
-        left_shift();
-        msleep(30);
-        left_shift();
-        while(internal_timer<84000){msleep(5); internal_timer =systime()-input;}//adjusting
-        right_shift();
-        while(internal_timer<110000){msleep(5); internal_timer =systime()-input;}//this exits scenario and put into 
-
+       
     } 
     else if (num_cups == 3) {
         while(internal_timer<first_hold){msleep(5); internal_timer =systime()-input;}//adjusting
         right_shift();
         while(internal_timer<second_hold){msleep(5); internal_timer =systime()-input;}//adjusting
-        left_shift();
-        msleep(30);
-        left_shift();
+        supa_left_shift();
         while(internal_timer<third_hold){msleep(5); internal_timer =systime()-input;}//adjusting
         right_shift();
         while(internal_timer<forth_hold){msleep(5); internal_timer =systime()-input;}//this exits scenario and put into 
 
     }
     raise_routine();
-        Drive(-1500,4.0);
+        Drive(-1500,3.0);
         msleep(40);
         turn1(90);
-        Drive(1500,8.5);
+        Drive(1500,6.5);
         set_servo_position(R_Arm,R_Down-200);
 }
 
@@ -147,13 +146,6 @@ void scenario4(int side, int num_cups,int input) {//pink green blue
     printf("internal_timer = %d \n",internal_timer);
 
     if (num_cups == 2) {
-        while(internal_timer<63000){msleep(5); internal_timer =systime()-input;}//adjusting
-        right_shift();
-        while(internal_timer<71000){msleep(5); internal_timer =systime()-input;}//adjusting
-        left_shift();
-        while(internal_timer<84000){msleep(5); internal_timer =systime()-input;}//adjusting
-        left_shift();
-        while(internal_timer<110000){msleep(5); internal_timer =systime()-input;}//this exits scenario and put into 
 
     } 
     else if (num_cups == 3) {
@@ -167,7 +159,7 @@ void scenario4(int side, int num_cups,int input) {//pink green blue
 
     }
     raise_routine();
-        Drive(-1500,4.0);
+        Drive(-1500,3.0);
         msleep(40);
         turn1(90);
         Drive(1500,8.5);
@@ -181,15 +173,7 @@ void scenario5(int side, int num_cups,int input) {//green blue pink
 
 
     if (num_cups == 2) {
-        while(internal_timer<second_hold){msleep(5); internal_timer =systime()-input;}//adjusting
-        left_shift();
-        while(internal_timer<71000){msleep(5); internal_timer =systime()-input;}//adjusting
-        right_shift();
-        msleep(30);
-        right_shift();
-        while(internal_timer<84000){msleep(5); internal_timer =systime()-input;}//adjusting
-        left_shift();
-        while(internal_timer<110000){msleep(5); internal_timer =systime()-input;}//this exits scenario and put into
+       
 
     } else if (num_cups == 3) {
         while(internal_timer<first_hold){msleep(5); internal_timer =systime()-input;}//adjusting
@@ -203,10 +187,10 @@ void scenario5(int side, int num_cups,int input) {//green blue pink
         while(internal_timer<forth_hold){msleep(5); internal_timer =systime()-input;}//this exits scenario and put into
     }
     raise_routine();
-        Drive(-1500,4.0);
+        Drive(-1500,3.0);
         msleep(40);
         turn1(90);
-        Drive(1500,8.5);
+        Drive(1500,6.5);
         set_servo_position(R_Arm,R_Down-200);
 }
 
@@ -217,15 +201,6 @@ void scenario6(int side, int num_cups,int input) {//green pink blue
     printf("internal_timer = %d \n",internal_timer);
 
     if (num_cups == 2) {
-        while(internal_timer<63000){msleep(5); internal_timer =systime()-input;}//adjusting
-        lower_routine();
-        while(internal_timer<71000){msleep(5); internal_timer =systime()-input;}//adjusting
-        right_shift();
-        while(internal_timer<84000){msleep(5); internal_timer =systime()-input;}//adjusting
-        left_shift();
-        msleep(30);
-        left_shift();
-        while(internal_timer<110000){msleep(5); internal_timer =systime()-input;}//this exits scenario and put into
     } else if (num_cups == 3) {
         while(internal_timer<first_hold){msleep(5); internal_timer =systime()-input;}//adjusting
         lower_routine();
@@ -237,7 +212,7 @@ void scenario6(int side, int num_cups,int input) {//green pink blue
         left_shift();
         while(internal_timer<forth_hold){msleep(5); internal_timer =systime()-input;}//this exits scenario and put into
 raise_routine();
-        Drive(-1500,4.0);
+        Drive(-1500,3.0);
         msleep(40);
         turn1(90);
         Drive(1500,8.5);
@@ -260,10 +235,10 @@ int cup_order(int side) {  /// THIS IS FOR TWO CUPS
     int initial_time=systime();//THIS IS WHERE INITIAL TIME IS SET//THERE ARE 2 OF THESE!!!
     set_servo_position(R_Arm,600);
     set_servo_position(L_Arm,600);
-    msleep(300);
+    msleep(150);
     safe_square_up(1500);
-    safe_small_square_up(1300);
-    Drive(1250,6);
+    safe_small_square_up(1400);
+    Drive(1350,6);
     msleep(500);
     set_servo_position(L_Arm,100);
     msleep(10);
@@ -468,6 +443,7 @@ int choose_cups() {
             msleep(2000);
             num_cups = 2;
             starting_position();
+            
             choose_side(num_cups);
 
 
@@ -523,7 +499,7 @@ int   grab_cups(int input){
 
     }
     //LIFTING CUPS PAUSE PINEAPPLE
-    while(internal_timer<20000){msleep(5); internal_timer =systime()-input;}//adjusting
+    while(internal_timer<20500){msleep(5); internal_timer =systime()-input;}//adjusting
     //PINEAPPLE 
     //lifting cups
     // set_servo_position(R_Arm,(R_Down-450));
@@ -539,7 +515,7 @@ int   grab_cups(int input){
     // set_servo_position(R_Arm,250);
     //    set_servo_position(L_Arm,250);
     //  msleep(100);
-    demo_gyro_square_up_small(-1249);//ONLY SKETCHY LINE
+    demo_gyro_square_up_small(-1350);//ONLY SKETCHY LINE
     msleep(100);
     enable_servos();
     set_servo_position(L_Arm,780);
@@ -559,7 +535,7 @@ int   grab_cups(int input){
 
     safe_square_up(1450);
     Drive(-1250,6);
-    while(internal_timer<38000){msleep(5); internal_timer =systime()-input;}//this leaves first drop site at 3.4 seconds after other bot dumps
+    while(internal_timer<early_hold){msleep(5); internal_timer =systime()-input;}//this leaves first drop site at 3.4 seconds after other bot dumps
     //PINEAPPLE 
     safe_square_up(1500);
     safe_small_square_up(1450);//is this sketchy
@@ -569,13 +545,13 @@ int   grab_cups(int input){
     turn1(90);
 
     safe_square_up_back(1500);
-    Drive(1400,5.7);
+    Drive(1500,5.7);
     turn1(-90);
-    safe_square_up(1450);
-    Drive(-1400,6.25);
+    safe_square_up(1500);
+    Drive(-1500,6.25);
     enable_servos();
     lower_routine();
-    while(internal_timer<59000){msleep(5); internal_timer =systime()-input;}
+    while(internal_timer<58000){msleep(5); internal_timer =systime()-input;}
 }
 
 
@@ -607,7 +583,7 @@ int cup_order2(int side) {   // THIS IS FOR 3 CUPS
     int green_order = 0;
     int timeout = 1000; // Adjust as needed
     if(side_button()==1){wait_for_light(3);}
-    shut_down_in(119);
+    shut_down_in(119.5);
     int initial_time=systime();//THIS IS WHERE INITIAL TIME IS SET//THERE ARE 2 OF THESE!!!
     set_servo_position(R_Arm,600);
     set_servo_position(L_Arm,600);

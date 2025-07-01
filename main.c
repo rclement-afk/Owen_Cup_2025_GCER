@@ -19,13 +19,13 @@ int main()
     
    // int final_timer = systime()-initial_timer;
    // printf("total time for dropoff = %d",final_timer);
- 
+  int battery_percentage=power_level()*100;
+printf("\nThe Current Battery level is %d percentage \n",battery_percentage);
   starting_position();
    quick_front_IR_check();
  int num_cups=choose_cups();
   
-
-
+  
     
 
     
