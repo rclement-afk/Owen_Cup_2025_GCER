@@ -8,14 +8,14 @@ int timer;
 int main()
 {
     int initial_timer=systime();
-    int L_Travel=L_Down-760;//960
-    int R_Travel=R_Down-784;//784
-    int L_Up=L_Down-1541;
-    int R_Up=R_Down-1672;
+   // int L_Travel=L_Down-760;//960
+    //int R_Travel=R_Down-784;//784
+    //int L_Up=L_Down-1541;
+    //int R_Up=R_Down-1672;
 
  
-    int pink =1;
-    int green =2;
+  //  int pink =1;
+   // int green =2;
     
    // int final_timer = systime()-initial_timer;
    // printf("total time for dropoff = %d",final_timer);
@@ -46,7 +46,7 @@ printf("\nThe Current Battery level is %d percentage \n",battery_percentage);
 
 
 
-    //printf("\nElapsed time = %d\n", timer);
-  //  printf("/nThe total time is %d ms/n",timer-systime());
-    return 0;
+   timer = systime()-initial_timer;
+  printf("/nThe total time is %d ms/n",timer);
+    return num_cups;
 }

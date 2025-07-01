@@ -1315,8 +1315,8 @@ void Spec_Drive(int target_mav_speed,double inches)
     printf(" %d ", right_motor);
     cmpc(left_motor);cmpc(right_motor);
     int sign_speed = sign(target_mav_speed);
-    double start_sec = seconds();
-    double accel_duration_sec = abs(target_mav_speed)*0.0003;
+   // double start_sec = seconds();
+   // double accel_duration_sec = abs(target_mav_speed)*0.0003;
     int ticks_left = inches * right_average;
 
     int run_speed = 0;

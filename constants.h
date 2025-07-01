@@ -265,6 +265,8 @@ int grab_cups(int input);
 void scenario1_left_shift();
 void supa_right_shift();
 void starting_position();
+int cup_order2(int side);
+int choose_cups();
 #endif
 
 
