@@ -1422,7 +1422,7 @@ void Drive(int target_mav_speed,double inches)
 
                     //run_speed = lerp(0, target_mav_speed, (seconds()-start_sec) / accel_duration_sec ); //DON'T TOUCH
                     run_speed =target_mav_speed;
-                    printf("run_speed = %d\n", run_speed);
+                    printf("run_speed = %d", run_speed);
                     mav(left_motor, run_speed + run_speed*theta*0.0001); //DON'T TOUCH
                     mav(right_motor,run_speed - run_speed*theta*0.0001); //DON'T TOUCH
                     msleep(10); //DON'T TOUCH
@@ -2346,29 +2346,30 @@ void slow_servo(int port, int position)
 }
 void  quick_front_IR_check()
 {
-if (irs.left >1200 || irs.right>1200)
+if (analog(irs.left) >1700 || analog(irs.right)>1700 || analog(small_irs.left)>small_irs.lmidpoint || analog(small_irs.right)>small_irs.rmidpoint)
 {
 display_clear();
-    printf("CHECK FRONT IR BEOFRE PROCEEDING\n");
-    msleep(100);
-    printf("CHECK FRONT IR BEOFRE PROCEEDING\n");
-    msleep(100);
-    printf("CHECK FRONT IR BEOFRE PROCEEDING\n");
-    msleep(100);
-    printf("CHECK FRONT IR BEOFRE PROCEEDING\n");
-    msleep(100);
-    printf("CHECK FRONT IR BEOFRE PROCEEDING\n");
-    msleep(100);
-    printf("CHECK FRONT IR BEOFRE PROCEEDING\n");
-    msleep(100);
-    printf("CHECK FRONT IR BEOFRE PROCEEDING\n");
-    msleep(100);
-    printf("CHECK FRONT IR BEOFRE PROCEEDING\n");
-    msleep(100);
-    printf("CHECK FRONT IR BEOFRE PROCEEDING\n");
-    msleep(100);
-    printf("CHECK FRONT IR BEOFRE PROCEEDING\n");
-    msleep(100);
+    printf("CHECK IR BEOFRE PROCEEDING\n");
+    msleep(1000);
+    display_clear();
+    msleep(1000);
+    printf("CHECK IR BEOFRE PROCEEDING\n");
+     msleep(1000);
+    display_clear();
+    msleep(1000);
+    printf("CHECK IR BEOFRE PROCEEDING\n");
+     msleep(1000);
+    display_clear();
+    msleep(1000);
+    printf("CHECK IR BEOFRE PROCEEDING\n");
+     msleep(1000);
+    display_clear();
+    msleep(1000);
+    printf("CHECK IR BEOFRE PROCEEDING\n");
+    msleep(1000);
+    display_clear();
+    msleep(1000);
+    printf("CHECK IR BEOFRE PROCEEDING\n");
     msleep(10000);
 }
 

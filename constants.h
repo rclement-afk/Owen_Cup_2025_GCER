@@ -12,11 +12,11 @@
 #define R_Down 1717
 #define L_Down 1708
 #define cup_hold 20000
-#define early_hold 39000//after first pom dump in startbox
-#define first_hold 58000//after pom dump
-#define second_hold 69800//after first drink
-#define third_hold 86800//after second drink
-#define forth_hold 110800//after third drink
+#define early_hold 39500//after first pom dump in startbox
+#define first_hold 59000//after pom dump(end of blue_connect, this has to be half way between pom dump and drink drop1
+#define second_hold 70800//after first drink, this is in gap between drink drop 1 and 2
+#define third_hold 87800//after second drink, this is in gap between drink drop 2 and 3
+#define forth_hold 110800//after third drink, this is after 3rd drink. Must be less than 114000 to put drinks in bin if blue is on far right side of claw
 
 
 // left motor = black wire toward screen
@@ -32,7 +32,6 @@ struct {
     .nw_bias = -0.5,
 };
 
-
 struct {
     int left,right,backleft,backright,l_average,r_average;   
 }static const motors = {
@@ -42,8 +41,6 @@ struct {
     .backright = 0,
     .l_average = 341,
     .r_average =380
-
-
 };
 
 struct {
@@ -79,7 +76,6 @@ struct {
     .min = {150,	960,	680,	1830},//calibrate servo on ground 1800
     .max = {2000,	2047,	2000,	964}
 }; //ports:	 ^0		 ^1		 ^2		 ^3	
-//port 1 = drawer controller
 
 struct {
     int et, light, slider;
@@ -209,10 +205,7 @@ int digital_def();
 int IR_Ports();
 void  ticks_to_inch_def(int target_mav_speed, double distance);
 
-
 // External Declarations
-
-
 
 extern const int right_cup_claw;
 extern const int left_cup_claw;
@@ -267,6 +260,7 @@ void supa_right_shift();
 void starting_position();
 int cup_order2(int side);
 int choose_cups();
+void low_battery_printout();
 #endif
 
 

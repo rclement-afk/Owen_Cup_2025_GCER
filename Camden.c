@@ -180,15 +180,15 @@ void scenario5(int side, int num_cups,int input) {//green blue pink
         while(internal_timer<first_hold){msleep(5); internal_timer =systime()-input;}//adjusting
         left_shift();
         while(internal_timer<second_hold){msleep(5); internal_timer =systime()-input;}//adjusting
-        right_shift();
-        msleep(30);
-        right_shift();
+        supa_right_shift();
         while(internal_timer<third_hold){msleep(5); internal_timer =systime()-input;}//adjusting
         left_shift();
+        
         while(internal_timer<forth_hold){msleep(5); internal_timer =systime()-input;}//this exits scenario and put into
     }
-    raise_routine();
+    
     Drive(-1500,3.0);
+    raise_routine();
     msleep(40);
     turn1(90);
     Drive(1500,6.5);
@@ -209,9 +209,7 @@ void scenario6(int side, int num_cups,int input) {//green pink blue
         while(internal_timer<second_hold){msleep(5); internal_timer =systime()-input;}//adjusting
         right_shift();
         while(internal_timer<third_hold){msleep(5); internal_timer =systime()-input;}//adjusting
-        left_shift();
-        msleep(30);
-        left_shift();
+        supa_left_shift();
         while(internal_timer<forth_hold){msleep(5); internal_timer =systime()-input;}//this exits scenario and put into
         raise_routine();
         Drive(-1500,3.0);
@@ -476,7 +474,7 @@ int   grab_cups(int input){
     printf("%d is the intro time",initial_time);
     int L_Travel=L_Down-760;//960
     int R_Travel=R_Down-784;//784
-printf("%d and %d",L_Travel, R_Travel);
+    printf("%d and %d",L_Travel, R_Travel);
     int internal_timer=1;
     enable_servo(1);
     enable_servo(0);
@@ -577,10 +575,10 @@ void starting_position(){
 
 int cup_order2(int side) {   // THIS IS FOR 3 CUPS
     printf( "\n cup_order 2 \n");
-   // int num_cups=3;
+    // int num_cups=3;
     int order = 0;
     int pink = 1;
-   // int blue = 0;
+    // int blue = 0;
     int green = 2;
     int blue_order = 0;
     int pink_order = 0;
@@ -591,10 +589,10 @@ int cup_order2(int side) {   // THIS IS FOR 3 CUPS
     int initial_time=systime();//THIS IS WHERE INITIAL TIME IS SET//THERE ARE 2 OF THESE!!!
     set_servo_position(R_Arm,600);
     set_servo_position(L_Arm,600);
-    msleep(1000);
+    msleep(200);
     safe_square_up(1500);
-    safe_small_square_up(1300);
-    Drive(1250,7);
+    safe_small_square_up(1500);
+    Drive(1450,7);
     msleep(500);
     set_servo_position(L_Arm,100);
     msleep(10);
@@ -731,6 +729,12 @@ void bully_motor(int port)
     mav(port,0);
 
 }
+void final_raise()
+{
+set_servo_position(R_Arm,131);
+set_servo_position(L_Arm,1460);
+}
+
 void raise_routine()
 {
     set_servo_position(R_Arm,131);
@@ -740,4 +744,21 @@ void lower_routine()
 {
     set_servo_position(L_Arm,916);
     set_servo_position(R_Arm,680);
+}
+void low_battery_printout()
+{
+    display_clear();
+    printf("BATTERY LEVEL IS TOO LOW TO RUN,PLEASE CHANGE!");
+    msleep(1000);
+    display_clear();
+    msleep(1000);
+    printf("BATTERY LEVEL IS TOO LOW TO RUN,PLEASE CHANGE!");
+    msleep(1000);
+    display_clear();
+    msleep(1000);
+    printf("BATTERY LEVEL IS TOO LOW TO RUN,PLEASE CHANGE!");
+    msleep(1000);
+    display_clear();
+    msleep(1000);
+    printf("BATTERY LEVEL IS TOO LOW TO RUN,PLEASE CHANGE!");
 }
