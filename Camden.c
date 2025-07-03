@@ -74,17 +74,33 @@ void scenario1(int side, int num_cups,int input) {//blue pink green
     else if (num_cups == 3) {
         lower_routine();//should be dumped at 62
         while(internal_timer<second_hold){msleep(5); internal_timer =systime()-input;}//adjusting
+        internal_timer = systime()-input;
+        printf("\n Time to leave shift after second pom drop and 1st drink drop: %d \n",internal_timer);
         scenario1_left_shift();//positioning for green drop
+        internal_timer = systime()-input;
+        printf("\n Time to be in position for 2nd drink drop: %d \n",internal_timer);
         while(internal_timer<third_hold){msleep(5); internal_timer =systime()-input;}//adjusting
+        internal_timer = systime()-input;
+        printf("\n Time to leave for 3rd drink drop: %d \n",internal_timer);
         supa_right_shift();// positioning for blue
+        internal_timer = systime()-input;
+        printf("\n in position for 3rd drink drop: %d \n",internal_timer);
         while(internal_timer<forth_hold){msleep(5); internal_timer =systime()-input;}//this exits scenario and put into
+        internal_timer = systime()-input; 
+        printf("\n Time to put stuff up: %d \n",internal_timer);
         //time to dump
         raise_routine();
-        Drive(-1500,3.0);
-        msleep(40);
+        Drive(1500,2.0);
+        set_servo_position(L_Arm,1570);
+        msleep(600);
+        Drive(-1500,6.0);
+        raise_routine();
+        msleep(200);
         turn1(90);
         Drive(1500,4.5);
-        set_servo_position(R_Arm,R_Down-200);
+        set_servo_position(R_Arm,1280);
+        internal_timer = systime()-input;
+        printf("\n Time to set down the money: %d \n",internal_timer);
     }
 }
 void scenario2(int side, int num_cups,int input) {//blue green pink
@@ -98,19 +114,39 @@ void scenario2(int side, int num_cups,int input) {//blue green pink
 
     else if (num_cups == 3) {
         while(internal_timer<first_hold){msleep(5); internal_timer =systime()-input;}//adjusting
+        internal_timer = systime()-input;
+        printf("\n Time to shift after 1st pom drop: %d \n",internal_timer);
         left_shift();
+        internal_timer = systime()-input;
+        printf("\n Time to arrive for 1st drink drop: %d \n",internal_timer);
         while(internal_timer<second_hold){msleep(5); internal_timer =systime()-input;}//adjusting
+        internal_timer = systime()-input;
+        printf("\n Time to leave after 1st drink drop: %d \n",internal_timer);
         right_shift();
+        internal_timer = systime()-input;
+        printf("\n Time to arrive for 2nd drink drop: %d \n",internal_timer);
         while(internal_timer<third_hold){msleep(5); internal_timer =systime()-input;}//adjusting
+        internal_timer = systime()-input;
+        printf("\n Time to leave after 2nd drink drop: %d \n",internal_timer);
         right_shift();
+        internal_timer = systime()-input;
+        printf("\n Time to arrive for 3rd drink drop: %d \n",internal_timer);
         while(internal_timer<forth_hold){msleep(5); internal_timer =systime()-input;}//this exits scenario and put into 
     }
+    internal_timer = systime()-input;
+    printf("\n Time to put stuff up: %d \n",internal_timer);
     raise_routine();
-    Drive(-1500,3.0);
-    msleep(40);
+    Drive(1500,2.0);
+    set_servo_position(L_Arm,1570);
+    msleep(600);
+    Drive(-1500,6.0);
+    raise_routine();
+    msleep(200);
     turn1(90);
     Drive(1500,4.5);
-    set_servo_position(R_Arm,R_Down-200);
+    set_servo_position(R_Arm,1280);
+    internal_timer = systime()-input;
+    printf("\n Time to set down the money: %d \n",internal_timer);
 }
 
 void scenario3(int side, int num_cups,int input) {//pink blue green
@@ -124,20 +160,46 @@ void scenario3(int side, int num_cups,int input) {//pink blue green
     } 
     else if (num_cups == 3) {
         while(internal_timer<first_hold){msleep(5); internal_timer =systime()-input;}//adjusting
+        internal_timer = systime()-input;
+        printf("\n Time to shift after 1st pom drop: %d \n",internal_timer);
         right_shift();
+        internal_timer = systime()-input;
+        printf("\n Time to arrive for 1st drink drop: %d \n",internal_timer);
         while(internal_timer<second_hold){msleep(5); internal_timer =systime()-input;}//adjusting
+        internal_timer = systime()-input;
+        printf("\n Time to leave after 1st drink drop: %d \n",internal_timer);
         supa_left_shift();
+        internal_timer = systime()-input;
+        printf("\n Time to arrive for 2nd drink drop: %d \n",internal_timer);
         while(internal_timer<third_hold){msleep(5); internal_timer =systime()-input;}//adjusting
+        internal_timer = systime()-input;
+        printf("\n Time to leave after 2nd drink drop: %d \n",internal_timer);
+        //gonna drop off a cup before we start last shift
+        /////////////////////////////////////////////
+        raise_routine();                         ///
+        Drive(1500,3.0);                              ///
+        set_servo_position(L_Arm,1570);              ///
+        msleep(600);                                  ///DROPPING OFF PINK CUP ON FAR SIDE OF TABLE
+        Drive(-1500,3.0);                             ///
+        msleep(30);                               ///
+        raise_routine();                          ///
+        msleep(200);                              ///
+        /////////////////////////////////////////////
         right_shift();
+        internal_timer = systime()-input;
+        printf("\n Time to arrive for 3rd drink drop: %d \n",internal_timer);
         while(internal_timer<forth_hold){msleep(5); internal_timer =systime()-input;}//this exits scenario and put into 
-
+        internal_timer = systime()-input;
+        printf("\n Time to put stuff up: %d \n",internal_timer);
     }
     raise_routine();
-    Drive(-1500,3.0);
-    msleep(40);
+    Drive(-1500,3.5);
+    msleep(40);               
     turn1(90);
     Drive(1500,6.5);
-    set_servo_position(R_Arm,R_Down-200);
+    set_servo_position(R_Arm,1280);
+    internal_timer = systime()-input;
+    printf("\n Time to set down the money: %d \n",internal_timer);
 }
 
 void scenario4(int side, int num_cups,int input) {//pink green blue
@@ -150,20 +212,39 @@ void scenario4(int side, int num_cups,int input) {//pink green blue
     } 
     else if (num_cups == 3) {
         while(internal_timer<first_hold){msleep(5); internal_timer =systime()-input;}//adjusting
+        internal_timer = systime()-input;
+        printf("\n Time to shift after 1st pom drop: %d \n",internal_timer);
         right_shift();
+        internal_timer = systime()-input;
+        printf("\n Time to arrive for 1st drink drop: %d \n",internal_timer);
         while(internal_timer<second_hold){msleep(5); internal_timer =systime()-input;}//adjusting
+        internal_timer = systime()-input;
+        printf("\n Time to leave after 1st drink drop: %d \n",internal_timer);
         left_shift();
+        internal_timer = systime()-input;
+        printf("\n Time to arrive for 2nd drink drop: %d \n",internal_timer);
         while(internal_timer<third_hold){msleep(5); internal_timer =systime()-input;}//adjusting
+        internal_timer = systime()-input;
+        printf("\n Time to leave after 2nd drink drop: %d \n",internal_timer);
         left_shift();
+        internal_timer = systime()-input;
+        printf("\n Time to arrive for 3rd drink drop: %d \n",internal_timer);
         while(internal_timer<forth_hold){msleep(5); internal_timer =systime()-input;}//this exits scenario and put into 
-
-    }
-    raise_routine();
-    Drive(-1500,3.0);
-    msleep(40);
+        internal_timer = systime()-input;
+        printf("\n Time to put stuff up: %d \n",internal_timer);
+    }//////////////////////////////////
+    raise_routine();                ///
+    Drive(1500,2.0);                ///  DROPPING OFF PINK CUP ON SIDE OF BOARD
+    set_servo_position(L_Arm,1570);///
+    msleep(600);                    ///
+    Drive(-1500,6.0);//////////////////
+    raise_routine();                
+    msleep(200);             
     turn1(90);
     Drive(1500,8.5);
-    set_servo_position(R_Arm,R_Down-200);
+    set_servo_position(R_Arm,1280);
+    internal_timer = systime()-input;
+    printf("\n Time to set down the money: %d \n",internal_timer);
 }
 
 void scenario5(int side, int num_cups,int input) {//green blue pink
@@ -178,21 +259,39 @@ void scenario5(int side, int num_cups,int input) {//green blue pink
 
     } else if (num_cups == 3) {
         while(internal_timer<first_hold){msleep(5); internal_timer =systime()-input;}//adjusting
+         internal_timer = systime()-input;
+        printf("\n Time to shift after 1st pom drop: %d \n",internal_timer);
         left_shift();
+        internal_timer = systime()-input;
+        printf("\n Time to arrive for 1st drink drop: %d \n",internal_timer);
         while(internal_timer<second_hold){msleep(5); internal_timer =systime()-input;}//adjusting
+        internal_timer = systime()-input;
+        printf("\n Time to leave after 1st drink drop: %d \n",internal_timer);
         supa_right_shift();
+        internal_timer = systime()-input;
+        printf("\n Time to arrive for 2nd drink drop: %d \n",internal_timer);
         while(internal_timer<third_hold){msleep(5); internal_timer =systime()-input;}//adjusting
+        internal_timer = systime()-input;
+        printf("\n Time to leave after 2nd drink drop: %d \n",internal_timer);
         left_shift();
-        
-        while(internal_timer<forth_hold){msleep(5); internal_timer =systime()-input;}//this exits scenario and put into
-    }
-    
-    Drive(-1500,3.0);
-    raise_routine();
-    msleep(40);
+        internal_timer = systime()-input;
+        printf("\n Time to arrive for 3rd drink drop: %d \n",internal_timer);
+        while(internal_timer<forth_hold){msleep(5); internal_timer =systime()-input;}//this exits scenario and put into 
+        internal_timer = systime()-input;
+        printf("\n Time to put stuff up: %d \n",internal_timer);
+    }//////////////////////////////////
+    raise_routine();                ///
+    Drive(1500,2.0);                ///  DROPPING OFF GREEN CUP ON DEAD MIDDLE OF BOARD
+    set_servo_position(L_Arm,1570);///
+    msleep(600);                    ///
+    Drive(-1500,6.0);//////////////////
+    raise_routine();                
+    msleep(200);             
     turn1(90);
     Drive(1500,6.5);
-    set_servo_position(R_Arm,R_Down-200);
+    set_servo_position(R_Arm,1280);
+     internal_timer = systime()-input;
+    printf("\n Time to set down the money: %d \n",internal_timer);
 }
 
 void scenario6(int side, int num_cups,int input) {//green pink blue
@@ -200,27 +299,47 @@ void scenario6(int side, int num_cups,int input) {//green pink blue
     int internal_timer = input;
     internal_timer = systime()-input;
     printf("internal_timer = %d \n",internal_timer);
-    //DO WE WANT TO SUPA SHIFT THIS???////////////////////////////////////////
-    //////////////////////////////////////////////////////////////////////////
+   
     if (num_cups == 2) {
     } else if (num_cups == 3) {
         while(internal_timer<first_hold){msleep(5); internal_timer =systime()-input;}//adjusting
+         internal_timer = systime()-input;
+        printf("\n Time to shift after 1st pom drop: %d \n",internal_timer);
         lower_routine();
+        internal_timer = systime()-input;
+        printf("\n Time to arrive for 1st drink drop: %d \n",internal_timer);
         while(internal_timer<second_hold){msleep(5); internal_timer =systime()-input;}//adjusting
+        internal_timer = systime()-input;
+        printf("\n Time to leave after 1st drink drop: %d \n",internal_timer);
         right_shift();
+        internal_timer = systime()-input;
+        printf("\n Time to arrive for 2nd drink drop: %d \n",internal_timer);
         while(internal_timer<third_hold){msleep(5); internal_timer =systime()-input;}//adjusting
+        internal_timer = systime()-input;
+        printf("\n Time to leave after 2nd drink drop: %d \n",internal_timer);
         supa_left_shift();
-        while(internal_timer<forth_hold){msleep(5); internal_timer =systime()-input;}//this exits scenario and put into
-        raise_routine();
-        Drive(-1500,3.0);
-        msleep(40);
+         internal_timer = systime()-input;
+        printf("\n Time to arrive for 3rd drink drop: %d \n",internal_timer);
+        while(internal_timer<forth_hold){msleep(5); internal_timer =systime()-input;}//this exits scenario and put into 
+        internal_timer = systime()-input;
+        printf("\n Time to put stuff up: %d \n",internal_timer);
+        //////////////////////////////////
+        raise_routine();                ///
+        Drive(1500,2.0);                ///  DROPPING OFF GREEN CUP ON DEAD MIDDLE OF BOARD
+        set_servo_position(L_Arm,1570);///
+        msleep(600);                    ///
+        Drive(-1500,6.0);//////////////////
+        raise_routine();                
+        msleep(200);             
         turn1(90);
         Drive(1500,8.5);
-        set_servo_position(R_Arm,R_Down-200);
+        set_servo_position(R_Arm,1280);
+         internal_timer = systime()-input;
+    printf("\n Time to set down the money: %d \n",internal_timer);
     }
 }
 int cup_order(int side) {  /// THIS IS FOR TWO CUPS
-    printf("\n cup_order 1 \n");
+   /* printf("\n cup_order 1 \n");
     //int num_cups=2;
     int order = 0;
     int pink = 1;
@@ -345,8 +464,8 @@ int cup_order(int side) {  /// THIS IS FOR TWO CUPS
         }
     }
     // cup_run(2); // Example call to cup_run with 2 cups
-
-    return order;
+*/
+    return 0;
 }
 
 int choose_side(int num_cups)
@@ -368,10 +487,10 @@ int choose_side(int num_cups)
         {
             display_clear();
             printf("You chose the PINK side! \n");
-            msleep(2000);
+            //msleep(2000);//put this back in quickly
             side=1;
             printf("HOLD DOWN SIDE BUTTON FOR WAIT_FOR_LIGHT! \n");
-            msleep(1000);
+            //msleep(1000);//put this back in quickly
             break;
 
 
@@ -391,7 +510,7 @@ int choose_side(int num_cups)
     if(side==2 && num_cups==2)
     {
         printf("\n cups = 2 side = 2");
-        msleep(2000);
+        //msleep(2000);
         cup_order2(2);
 
     }
@@ -399,20 +518,20 @@ int choose_side(int num_cups)
     else if(side==2 && num_cups==3)
     {
         printf("\n cups = 3 side = 2");
-        msleep(2000);
+        //msleep(2000);
         cup_order2(2);
     }
 
     if(side==1 && num_cups==2)
     {
         printf("\n cups = 2 side = 1");
-        msleep(2000);
+        //msleep(2000);
         cup_order2(1);
     }
     else if(side == 1 && num_cups == 3)
     {
         printf("\n cups = 3 side = 1");
-        msleep(2000);
+        //msleep(2000);
         cup_order2(1);
     }
 
@@ -483,7 +602,7 @@ int   grab_cups(int input){
     set_servo_position(L_Arm,L_Down);
     set_servo_position(R_Arm,R_Down);
     msleep(200);
-    Spec_Drive(1200,15);
+    Spec_Drive(1200,14.5);
     int left_pos =L_Down;
     int right_pos =R_Down;
     int counter=0;
@@ -500,14 +619,15 @@ int   grab_cups(int input){
 
     }
     //LIFTING CUPS PAUSE PINEAPPLE
-    while(internal_timer<20500){msleep(5); internal_timer =systime()-input;}//adjusting
+   
     //PINEAPPLE 
     //lifting cups
     // set_servo_position(R_Arm,(R_Down-450));
     //    set_servo_position(L_Arm,(L_Down-450));//lifting cups
     turn1(-3);
-    Drive(-1400,8);
-
+    Drive(-1400,3);
+     while(internal_timer<cup_hold){msleep(5); internal_timer =systime()-input;}//adjusting
+ Drive(-1400,5);
     //lifting cups
     //  slow_servo(R_Arm,400);
     //  slow_servo(L_Arm,400);//lifting cups
@@ -536,8 +656,12 @@ int   grab_cups(int input){
 
     safe_square_up(1450);
     Drive(-1250,6);
+    int curr_time=systime()-initial_time;
+    printf("\n Time to be in place for first pom drop: %d \n",curr_time);
     while(internal_timer<early_hold){msleep(5); internal_timer =systime()-input;}//this leaves first drop site at 3.4 seconds after other bot dumps
     //PINEAPPLE 
+    curr_time=systime()-initial_time;
+    printf("\n Time of leaving after first pom drop: %d \n",curr_time);
     safe_square_up(1500);
     safe_small_square_up(1450);//is this sketchy
     enable_servos();
@@ -552,6 +676,8 @@ int   grab_cups(int input){
     Drive(-1500,6.25);
     enable_servos();
     lower_routine();
+    curr_time=systime()-initial_time;
+    printf("\n Time to be in place for second pom drop: %d \n",curr_time);
     while(internal_timer<58000){msleep(5); internal_timer =systime()-input;}
     return 0;
 }
@@ -583,20 +709,28 @@ int cup_order2(int side) {   // THIS IS FOR 3 CUPS
     int blue_order = 0;
     int pink_order = 0;
     int green_order = 0;
-    int timeout = 1000; // Adjust as needed
-    if(side_button()==1){wait_for_light(3);}
+    int timeout = 1000; // Adjust as needed///put this back in a few minutes
+ 
+    
+ //   if(side_button()==1){//wait_for_light(3);}
+   while(side_button()==0){
+       msleep(2);
+   }
     shut_down_in(119.5);
     int initial_time=systime();//THIS IS WHERE INITIAL TIME IS SET//THERE ARE 2 OF THESE!!!
     set_servo_position(R_Arm,600);
     set_servo_position(L_Arm,600);
     msleep(200);
     safe_square_up(1500);
+    msleep(30);
     safe_small_square_up(1500);
-    Drive(1450,7);
+    msleep(30);
+    turn1(1);
+    Drive(1450,6.5);
     msleep(500);
-    set_servo_position(L_Arm,100);
+    set_servo_position(L_Arm,200);
     msleep(10);
-    set_servo_position(R_Arm,100);
+    set_servo_position(R_Arm,200);
     msleep(1200);
     camera_open_black();
     camera_open_black();
@@ -731,14 +865,14 @@ void bully_motor(int port)
 }
 void final_raise()
 {
-set_servo_position(R_Arm,131);
-set_servo_position(L_Arm,1460);
+    set_servo_position(R_Arm,131);
+    set_servo_position(L_Arm,1460);
 }
 
 void raise_routine()
 {
     set_servo_position(R_Arm,131);
-    set_servo_position(L_Arm,464);
+    set_servo_position(L_Arm,434);
 }
 void lower_routine()
 {

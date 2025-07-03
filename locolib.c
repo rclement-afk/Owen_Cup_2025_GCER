@@ -426,7 +426,7 @@ void turn1(int degrees)
             mav(left_motor, speed*1);
             mav(right_motor, (speed*-1));
             theta += gyro_z() - bias_placeholder;
-            printf("%f is current theta\n",theta);
+            printf("%f is CT",theta);
         }
     }else {
         while(theta > target_theta* .67)
@@ -436,7 +436,7 @@ void turn1(int degrees)
             mav(left_motor,(speed*-1));
             mav(right_motor,speed);
             theta += gyro_z() - bias_placeholder;
-            printf("%f is current theta\n",theta);
+            printf("%f is CT",theta);
         }
     }
     printf(" theta: %.6f ", theta*.181812);
@@ -994,14 +994,14 @@ void safe_small_square_up(int speed)
     while(analog(small_irs.left)>small_irs.lmidpoint || analog(small_irs.right)>small_irs.rmidpoint)
     {
         if(analog(small_irs.left)>small_irs.lmidpoint)
-        {mav(motors.left, -.25*speed); printf("L Hit");} //left black, go back
+        {mav(motors.left, -.25*speed); printf("L");} //left black, go back
         else 
-        {mav(motors.left, 0.25*speed); printf("R Hit");} //left white go forward
+        {mav(motors.left, 0.25*speed); printf("R");} //left white go forward
 
         if(analog(small_irs.right)>small_irs.rmidpoint)
-        {mav(motors.right,  -.25*speed); printf("R Hit");}//right black, go back
+        {mav(motors.right,  -.25*speed); printf("R");}//right black, go back
         else 
-        {mav(motors.right, 0.25*speed); printf("L Hit"); }//right white go forward
+        {mav(motors.right, 0.25*speed); printf("L"); }//right white go forward
         msleep(2);
     }
     mav(motors.right, 0);
@@ -1026,14 +1026,14 @@ if (speed>0){speed=speed*-1;}
     while(analog(irs.left)>irs.lmidpoint || analog(irs.right)>irs.rmidpoint)
     {
         if(analog(irs.left)>irs.lmidpoint)
-        {mav(motors.left, -.25*speed); printf("left hit");} //left black, go back
+        {mav(motors.left, -.25*speed); printf("L");} //left black, go back
         else 
-        {mav(motors.left, 0.25*speed); printf("right hit");} //left white go forward
+        {mav(motors.left, 0.25*speed); printf("R");} //left white go forward
 
         if(analog(irs.right)>irs.rmidpoint)
-        {mav(motors.right,  -.25*speed); printf("right hit");}//right black, go back
+        {mav(motors.right,  -.25*speed); printf("R");}//right black, go back
         else 
-        {mav(motors.right, 0.25*speed); printf("left hit"); }//right white go forward
+        {mav(motors.right, 0.25*speed); printf("L"); }//right white go forward
         msleep(2);
         i=i+1;
         //if(i>100){break;}
@@ -1060,14 +1060,14 @@ void safe_square_up(int speed)//only works in the forward direction!!!!!!!!!!!!!
     while(analog(irs.left)>irs.lmidpoint || analog(irs.right)>irs.rmidpoint)
     {
         if(analog(irs.left)>irs.lmidpoint)
-        {mav(motors.left, -.25*speed); printf("left hit");} //left black, go back
+        {mav(motors.left, -.25*speed); printf("L");} //left black, go back
         else 
-        {mav(motors.left, 0.25*speed); printf("right hit");} //left white go forward
+        {mav(motors.left, 0.25*speed); printf("R");} //left white go forward
 
         if(analog(irs.right)>irs.rmidpoint)
-        {mav(motors.right,  -.25*speed); printf("right hit");}//right black, go back
+        {mav(motors.right,  -.25*speed); printf("R");}//right black, go back
         else 
-        {mav(motors.right, 0.25*speed); printf("left hit"); }//right white go forward
+        {mav(motors.right, 0.25*speed); printf("L"); }//right white go forward
         msleep(2);
         i=i+1;
         if(i>100){break;}
@@ -1104,14 +1104,14 @@ void demo_gyro_square_up(int speed)
         while(analog(irs.left)>irs.lmidpoint || analog(irs.right)>irs.rmidpoint)
         {
             if(analog(irs.left)>irs.lmidpoint)
-            {mav(motors.left, -.25*speed); printf("\n left hit");} 
-            else {mav(motors.left, 0.5*speed); printf("\n right hit"); 
+            {mav(motors.left, -.25*speed); printf("L");} 
+            else {mav(motors.left, 0.5*speed); printf("R"); 
 
                  }
 
             if(analog(irs.right)>irs.rmidpoint)
-            {mav(motors.right,  -.25*speed); printf("\n right hit");}
-            else {mav(motors.right, 0.5*speed); printf("\n left hit"); 
+            {mav(motors.right,  -.25*speed); printf("R");}
+            else {mav(motors.right, 0.5*speed); printf("L"); 
 
                   msleep(2);
                   if(analog(irs.left) < irs.lmidpoint && analog(irs.right) < irs.rmidpoint)
@@ -1127,14 +1127,14 @@ void demo_gyro_square_up(int speed)
         while(analog(irs.left)>irs.lmidpoint || analog(irs.right)>irs.rmidpoint)
         {
             if(analog(irs.left)>irs.lmidpoint)
-            {mav(motors.left, -.25*speed); printf("\n left hit");} 
-            else {mav(motors.left, 0.5*speed); printf("\n right hit"); 
+            {mav(motors.left, -.25*speed); printf("L");} 
+            else {mav(motors.left, 0.5*speed); printf("R"); 
 
                  }
 
             if(analog(irs.right)>irs.rmidpoint)
-            {mav(motors.right,  -.25*speed); printf("\n right hit");}
-            else {mav(motors.right, 0.5*speed); printf("\n left hit"); 
+            {mav(motors.right,  -.25*speed); printf("R");}
+            else {mav(motors.right, 0.5*speed); printf("L"); 
 
                   msleep(2);
                   if(analog(irs.left) < irs.lmidpoint && analog(irs.right) < irs.rmidpoint)
@@ -1149,14 +1149,14 @@ void demo_gyro_square_up(int speed)
         while(analog(irs.left)>irs.lmidpoint || analog(irs.right)>irs.rmidpoint)
         {
             if(analog(irs.right)>irs.lmidpoint)
-            {mav(motors.left, -.25*speed); printf("left hit");} 
-            else {mav(motors.left, 0.25*speed); printf("right hit"); 
+            {mav(motors.left, -.25*speed); printf("L");} 
+            else {mav(motors.left, 0.25*speed); printf("R"); 
 
                  }
 
             if(analog(irs.left)>irs.rmidpoint)
-            {mav(motors.right,  -.25*speed); printf("right hit");}
-            else {mav(motors.right, 0.25*speed); printf("left hit"); 
+            {mav(motors.right,  -.25*speed); printf("R");}
+            else {mav(motors.right, 0.25*speed); printf("L"); 
 
                   msleep(2);
                   if(analog(irs.left) < irs.lmidpoint && analog(irs.right) < irs.rmidpoint)
@@ -1422,12 +1422,12 @@ void Drive(int target_mav_speed,double inches)
 
                     //run_speed = lerp(0, target_mav_speed, (seconds()-start_sec) / accel_duration_sec ); //DON'T TOUCH
                     run_speed =target_mav_speed;
-                    printf("run_speed = %d", run_speed);
+                    printf("RS%d", run_speed);
                     mav(left_motor, run_speed + run_speed*theta*0.0001); //DON'T TOUCH
                     mav(right_motor,run_speed - run_speed*theta*0.0001); //DON'T TOUCH
                     msleep(10); //DON'T TOUCH
                     //DON'T TOUCH
-                    printf(" theta %f ", theta);
+                    printf("TH%f ", theta);
                     theta += (gyro_z()-bias_placeholder) * 2;///
                     // printf(" %d ", gmpc(left_motor));
                 } //DON'T TOUCH
@@ -2282,14 +2282,14 @@ void demo_gyro_square_up_small(int speed)
     while(analog(small_irs.left)>small_irs.lmidpoint || analog(small_irs.right)>small_irs.rmidpoint)
     {
         if(analog(small_irs.left)>small_irs.lmidpoint)
-        {mav(motors.left, -.25*speed); printf("left hit");} 
-        else {mav(motors.left, 0.25*speed); printf("right hit"); }
+        {mav(motors.left, -.25*speed); printf("L");} 
+        else {mav(motors.left, 0.25*speed); printf("R"); }
 
 
 
         if(analog(small_irs.right)>small_irs.rmidpoint)
-        {mav(motors.right,  -.25*speed); printf("right hit");}
-        else {mav(motors.right, 0.25*speed); printf("left hit"); }
+        {mav(motors.right,  -.25*speed); printf("R");}
+        else {mav(motors.right, 0.25*speed); printf("L"); }
 
         msleep(2);
         if(analog(small_irs.left) < small_irs.lmidpoint && analog(small_irs.right) < small_irs.rmidpoint)

@@ -11,12 +11,12 @@
 #define R_Arm 0
 #define R_Down 1717
 #define L_Down 1708
-#define cup_hold 20000
-#define early_hold 39500//after first pom dump in startbox
-#define first_hold 59000//after pom dump(end of blue_connect, this has to be half way between pom dump and drink drop1
-#define second_hold 70800//after first drink, this is in gap between drink drop 1 and 2
-#define third_hold 87800//after second drink, this is in gap between drink drop 2 and 3
-#define forth_hold 110800//after third drink, this is after 3rd drink. Must be less than 114000 to put drinks in bin if blue is on far right side of claw
+#define cup_hold 19500
+#define early_hold 35500//after first pom dump in startbox
+#define first_hold 56800//after pom dump(end of blue_connect, this has to be half way between pom dump and drink drop1
+#define second_hold 67200//after first drink, this is in gap between drink drop 1 and 2
+#define third_hold 86000//after second drink, this is in gap between drink drop 2 and 3
+#define forth_hold 111000//after third drink, this is after 3rd drink. Must be less than 114000 to put drinks in bin if blue is on far right side of claw
 
 
 // left motor = black wire toward screen
